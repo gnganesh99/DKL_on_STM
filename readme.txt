@@ -5,12 +5,9 @@ The DKL uses open-source python package AtomAI (https://github.com/pycroscopy/at
 
 Implementation
 
-
 1. The LabVIEW program integrates the DKL implementation across the data analysis and the instrumentation control.
 
-
 2. The python program "DKL_using_gpax.py" is used for the based regression and analysis. The function "dkl_gpax_LV" interfaces with the Labview program to parse control parameters.
-
 
 3. The framework uses an additional "scalarizer.py" which is used to process spectoscopic information that is used to create the targets for model training.
 
