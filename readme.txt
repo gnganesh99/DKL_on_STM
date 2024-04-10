@@ -16,7 +16,7 @@ Implementation
 
 Experimental metadeta files
 
-The h5 files contain the spectroscopy data for the DKL implemented on the STM.
+The h5 files contain the spectroscopy data for the DKL implemented on the STM. An example of file handling is shown in "Analyze_DKL_data.ipynb"
 
 The files are named as the figures in the manuscript. The frame size of the stm image is given in the file name
 
@@ -26,4 +26,4 @@ Each dataset contains the tunneling spectra. There are four channels: Bias, Curr
 
 1. dataset.metadata['DKL_position']  # Provides the position descriptors for the iterations
 2. dataset.metadata['DKL_scalar'] # Provides the scalar value for the iterations
-3. dataset.metadata['scan_image'] # the 2D array containing the STM scan image
+3. dataset.metadata['image_attr'] # to access stm image attributes
