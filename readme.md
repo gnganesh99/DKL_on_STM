@@ -1,9 +1,10 @@
 Deep-Kernel-Learning for STM
 
 Deep Kernel Learning (DKL) method is used for automated discovery of structure-property correlation using a scanning tunneling microscope. The deep kernel consists of a deep neural network combined with a standard Gaussian Process (GP) kernel, such as a radial basis function (RBF). The DNN had three layers with the first, second, and third layers consisting of 64, 64, and 2 neurons respectively, with ReLu activation function in the first two layers. The output of the last layer was treated as inputs to the RBF kernel of the GP regression.
-The DKL uses open-source python package AtomAI (https://github.com/pycroscopy/atomai) for image processing and feature extraction, while GPax (https://github.com/ziatdinovmax/gpax) was used for the DKL-based training and GP regression. These were integrated with LabView programs to access the STM controls.
+The DKL uses open-source python package AtomAI (https://github.com/pycroscopy/atomai) for image processing and feature extraction, while GPax (https://github.com/ziatdinovmax/gpax) was used for the DKL-based training and GP regression. 
+These were integrated with LabView programs to access the STM controls. The "DKL_Labview_interface.vi" program shows the execution process used in the experiment
 
-The colab program "Workflow_DKL_STM.ipynb" demonstrates the workflow of the DKL based on ground truth data.
+The colab program "Workflow_DKL_STM.ipynb" provides a walkthrough of the DKL workflow. Here the DKL experiment is simulated on the ground truth grid data. 
 
 Experimental Implementation
 
@@ -14,6 +15,9 @@ Experimental Implementation
 3. The framework uses an additional "scalarizer.py" which is used to process spectoscopic information that is used to create the targets for model training.
 
 4. For the autonomous DKL exploration, the program described in "next_DKL_coordinate.py" is used to determine the successive frame for DKL.
+
+5. The labview file "DKL_Labview_interface.vi" uses subvis provided by the Nanonis programming interface library in addition to custom built subvis for python-script execution.
+
 
 
 
