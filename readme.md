@@ -7,7 +7,7 @@ In this study, a three-layer DNN with 64, 64, and 2 neurons in the respective la
 A simulated version of the DKL workflow can be run using the "Workflow_DKL_STM.ipynb" notebook, which simulates the DKL experiment on ground-truth grid data.
 
 
-Experimental Procedure
+Experimental Details
 
 1. The STM instrument is operated through a LabVIEW program, "DKL_Labview_interface.vi," which integrates the DKL model's decision-making process with STM control. The labview program uses subvis provided by the Nanonis programming interface library in addition to custom built subvis for python-script execution.
 
