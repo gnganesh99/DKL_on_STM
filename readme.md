@@ -1,22 +1,21 @@
 Deep-Kernel-Learning for STM
 
-Deep Kernel Learning (DKL) method is used for automated discovery of structure-property correlation using a scanning tunneling microscope. The deep kernel consists of a deep neural network combined with a standard Gaussian Process (GP) kernel, such as a radial basis function (RBF). The DNN had three layers with the first, second, and third layers consisting of 64, 64, and 2 neurons respectively, with ReLu activation function in the first two layers. The output of the last layer was treated as inputs to the RBF kernel of the GP regression.
-The DKL uses open-source python package AtomAI (https://github.com/pycroscopy/atomai) for image processing and feature extraction, while GPax (https://github.com/ziatdinovmax/gpax) was used for the DKL-based training and GP regression. 
-These were integrated with LabView programs to access the STM controls. The "DKL_Labview_interface.vi" program shows the execution process used in the experiment
+Deep Kernel Learning (DKL) is a Bayesian deep learning approach that combines the deep neural networks (DNNs) with Gaussian Processes (GPs) for high dimentional (eg: images) data modeling. This method has been applied to scanning tunneling microscopy (STM) to automate the discovery of correlations between structure and properties in experimental datasets.
 
-The colab program "Workflow_DKL_STM.ipynb" provides a walkthrough of the DKL workflow. Here the DKL experiment is simulated on the ground truth grid data. 
+In this study, a three-layer DNN with 64, 64, and 2 neurons in the respective layers and ReLU activation in the first two layers is used. The final layer’s output serves as input to a Radial Basis Function (RBF) kernel, which is part of the GP model. The DKL model is trained on STM spectroscopy data, using the AtomAI library (https://github.com/pycroscopy/atomai) for image processing and GPax (https://github.com/ziatdinovmax/gpax) for DKL training and GP regression. Additionally, LabVIEW is employed for instrument control, allowing direct communication between the DKL model and STM hardware.
 
-Experimental Implementation
+A simulated version of the DKL workflow can be run using the "Workflow_DKL_STM.ipynb" notebook, which simulates the DKL experiment on ground-truth grid data.
 
-1. The LabVIEW program integrates the DKL implementation across the data analysis and the instrumentation control.
 
-2. The python program "DKL_using_gpax.py" is used for the DKL based regression and analysis. The function "dkl_gpax_LV" interfaces with the Labview program to parse control parameters.
+Experimental Procedure
 
-3. The framework uses an additional "scalarizer.py" which is used to process spectoscopic information that is used to create the targets for model training.
+1. The STM instrument is operated through a LabVIEW program, "DKL_Labview_interface.vi," which integrates the DKL model's decision-making process with STM control. The labview program uses subvis provided by the Nanonis programming interface library in addition to custom built subvis for python-script execution.
 
-4. For the autonomous DKL exploration, the program described in "next_DKL_coordinate.py" is used to determine the successive frame for DKL.
+2. The core of the DKL implementation is managed through the Python script "DKL_using_gpax.py," which uses the GPax library for DKL-based GP regression. The collected STM images and spectroscopy data are processed using the AtomAI Python library, which handles image pre-processing and feature extraction. The regression model is trained on the STM image and spectroscopy data to predict properties of interest.
 
-5. The labview file "DKL_Labview_interface.vi" uses subvis provided by the Nanonis programming interface library in addition to custom built subvis for python-script execution.
+3. The file "scalarizer.py" is used to process the spectroscopic data, generating target scalar values for training the DKL model. Pre-processed data and metadata (e.g., DKL positions and scalar values) are stored for easy retrieval via labview functions.
+
+4. An autonomous exploration algorithm in "next_DKL_coordinate.py" determines the next region for the STM to scan based on the GP regression results, optimizing the discovery of structure-property correlations.
 
 
 
