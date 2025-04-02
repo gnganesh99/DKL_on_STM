@@ -91,7 +91,7 @@ def patch_weight(x_array, y_array, weight, xc, yc, frame):
 
 
 def next_scan_coords(file_name, pixels, frame_old, frame_new):
-    os.chdir(r"C:\Users\Public\Ganesh\DKL_Experiments")
+    
     
     dummy_image = np.ones(shape = (pixels, pixels))
     frame = int(pixels * frame_new/ frame_old)
@@ -125,7 +125,7 @@ def next_scan_coords(file_name, pixels, frame_old, frame_new):
 
 def next_scan_coordWeight(file_name, pixels, frame_old, frame_new):
     
-    os.chdir(r"C:\Users\Public\Ganesh\DKL_Experiments")
+    
     dummy_image = np.ones(shape = (pixels, pixels))
     
     frame =  int(pixels* frame_new/ frame_old)
